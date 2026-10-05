@@ -69,16 +69,6 @@ def brain_of_the_doctor(patient_text, image_filepath=None, video_filepath=None):
     return response.choices[0].message.content
 
 
-if __name__ == "__main__":
-    image_path = os.path.join(os.path.dirname(__file__), "sample-image.png")
-    print(
-        brain_of_the_doctor(
-            "Please describe what is visible and provide general skin-care guidance.",
-            image_filepath=image_path,
-        )
-    )
-
-
 # OLD CODE KEPT FOR REFERENCE
 # import base64
 # import os

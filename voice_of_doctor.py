@@ -38,31 +38,10 @@ def play_audio(audio_filepath):
         subprocess.run(["xdg-open", audio_filepath], check=False)
 
 
-text = "Hi, my name is prajaktha, who are you?. I am very happy."
-api_key = os.environ.get("DEEPGRAM_API_KEY")
-deepgram = DeepgramClient(api_key=api_key)
-audio = deepgram.speak.v1.audio.generate(
-    text=text,
-    model="aura-2-thalia-en",
-    encoding="mp3",
-)
-# Step3: Save audio
-from pathlib import Path
-
-audio_file="test-output.mp3"
-audio_path = Path(__file__).with_name(audio_file)
-with audio_path.open("wb") as file:
-    for chunk in audio:
-        file.write(chunk)
-
-# Step4: Play audio
-import platform
-import subprocess
-
-
-if platform.system() == "Darwin":  # macOS
-    subprocess.run(["afplay", str(audio_path)])
-elif platform.system() == "Windows":
-    os.startfile(audio_path)
-else:  # Linux
-    subprocess.run(["xdg-open", str(audio_path)])
+if __name__ == "__main__":
+    text = "Hi, my name is prajaktha, who are you?. I am very happy."
+    audio_path = convert_text_to_doctor_audio(
+        text,
+        Path(__file__).with_name("test-output.mp3"),
+    )
+    play_audio(audio_path)

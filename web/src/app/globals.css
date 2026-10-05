@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --page: #f7f9ff;
+  --surface: #ffffff;
+  --surface-soft: #f3f6fc;
+  --text: #18254b;
+  --text-soft: #52617f;
+  --muted: #8792ab;
+  --border: #e4e9f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  color-scheme: dark;
+  --page: #0c1227;
+  --surface: #141d37;
+  --surface-soft: #1a2542;
+  --text: #f1f4ff;
+  --text-soft: #c3cbe0;
+  --muted: #929fbd;
+  --border: #273454;
+}
+
+html { min-height: 100%; scroll-behavior: smooth; background: var(--page); }
+body { min-height: 100vh; margin: 0; background: var(--page); color: var(--text); font-family: "Aptos", "Segoe UI", sans-serif; }
+button, input, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid rgba(102, 126, 234, 0.48); outline-offset: 3px; }
+::selection { background: #dbe4ff; color: #273f9e; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
